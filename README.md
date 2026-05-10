@@ -1,6 +1,6 @@
 # FD-DAB — Farkus Discord Analytics Bot
 
-Public landing page for FD-DFD-DAB, a powerful Discord analytics bot.
+Public landing page for FD-DAB, a powerful Discord analytics bot.
 
 ## 🌐 Website
 
@@ -23,19 +23,15 @@ FD-DAB gives your Discord server powerful analytics, beautiful PDF reports, and 
 
 ### Pricing
 - **Free** — R0/mo — 1 server, 7 days history
-- **Pro** — R99/mo — 5 servers, 30 days history, PDF reports
-- **Business** — R299/mo — Unlimited servers, 90 days history, API access
+- **Pro** — R69/mo — 3 servers, 30 days history, PDF reports
+- **Business** — R199/mo — Up to 10 servers, 90 days history, API access
 
 ## 🔗 Links
 
-- **GitHub:** <https://github.com/farkusza/farkus-analytics>
+- **Website:** <https://farkusza.github.io/fd-dab-website/>
 - **Invite Bot:** <https://discord.com/oauth2/authorize?client_id=1499773683835732088&permissions=268435456&scope=bot%20applications.commands>
 - **Contact:** fd-dab-bot@agentmail.io
 
-## 📄 License
-
-MIT License — see [LICENSE](LICENSE) for details.
-
 ---
 
-Made with 💜 by [FarkusDynamics](https://github.com/farkusza)
+Made with 💜 by [FarkusDynamics](https://farkusza.github.io/fd-dab-website/)
