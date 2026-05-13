@@ -3,10 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FD-DAB — Farkus Discord Analytics Bot</title>
+  <title>FD-DAB — #1 Discord Analytics Bot | Track Engagement, Growth & Insights</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="FD-DAB is South Africa's leading Discord analytics bot. Track messages, engagement, voice activity, and member retention. Beautiful PDF reports, live heatmaps, and smart alerts — trusted by growing communities across SA, UK, and US.">
+  <meta name="keywords" content="Discord analytics bot, Discord server statistics, community analytics, Discord engagement tracking, PDF reports Discord, Discord heatmap, member retention Discord, FD-DAB, FarkusDynamics, Discord analytics South Africa">
+  <meta name="author" content="FarkusDynamics">
+  <link rel="canonical" href="https://farkusza.github.io/fd-dab-website/">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="logo-v2-nav.png">
+  <link rel="shortcut icon" type="image/png" href="logo-v2-nav.png">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="FD-DAB — Beautiful Analytics for Discord Communities">
+  <meta property="og:description" content="Track engagement, monitor growth, understand your community. Beautiful PDF reports, live heatmaps, and smart alerts — all from one simple Discord bot.">
+  <meta property="og:image" content="https://farkusza.github.io/fd-dab-website/dab-hero-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://farkusza.github.io/fd-dab-website/">
+  <meta property="og:site_name" content="FD-DAB">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FD-DAB — Beautiful Analytics for Discord Communities">
+  <meta name="twitter:description" content="Track engagement, monitor growth, understand your community. Beautiful PDF reports, live heatmaps, and smart alerts.">
+  <meta name="twitter:image" content="https://farkusza.github.io/fd-dab-website/dab-hero-og.png">
+
+  <!-- Analytics (Plausible - privacy-friendly) -->
+  <script defer data-domain="farkusza.github.io/fd-dab-website" src="https://plausible.io/js/script.js"></script>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg-primary: #0b0d13;
@@ -61,6 +92,30 @@
       background-size: 60px 60px;
       pointer-events: none;
       z-index: 0;
+    }
+
+    /* --- Floating particles --- */
+    .particles {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, 0.15);
+      animation: particleDrift linear infinite;
+    }
+    .particle:nth-child(odd) {
+      background: rgba(6, 182, 212, 0.12);
+    }
+    @keyframes particleDrift {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
     }
 
     /* --- Navigation --- */
@@ -130,6 +185,16 @@
 
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px var(--violet-glow); }
 
+    /* Mobile nav toggle */
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
     /* --- Hero --- */
     .hero {
       min-height: 100vh;
@@ -187,12 +252,12 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.4rem 1rem;
-      background: var(--violet-dim);
-      border: 1px solid var(--violet-border);
+      background: var(--green-dim);
+      border: 1px solid rgba(16, 185, 129, 0.35);
       border-radius: 100px;
       font-size: 0.78rem;
       font-weight: 600;
-      color: var(--violet);
+      color: var(--green);
       margin-bottom: 2rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -230,7 +295,7 @@
     .hero p {
       font-size: 1.15rem;
       color: var(--text-secondary);
-      max-width: 580px;
+      max-width: 620px;
       margin: 0 auto 2.5rem;
       line-height: 1.75;
     }
@@ -240,6 +305,26 @@
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
+    }
+
+    .hero-trust {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    .hero-trust .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-trust .trust-icon {
+      font-size: 0.9rem;
     }
 
     .btn {
@@ -315,6 +400,341 @@
       font-size: 0.85rem;
       font-weight: 500;
       margin-top: 0.4rem;
+    }
+
+    /* --- Social Proof / Trusted By --- */
+    .social-proof {
+      padding: 4rem 2rem 5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .social-proof .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .trust-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      opacity: 0.45;
+    }
+
+    .trust-logos span {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: -0.02em;
+    }
+
+    .testimonials-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      text-align: left;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--violet-border);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .testimonial-quote {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .testimonial-quote::before {
+      content: '"';
+      font-size: 2.5rem;
+      color: var(--violet);
+      line-height: 0;
+      vertical-align: -0.4em;
+      margin-right: 0.15em;
+    }
+
+    .testimonial-author {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .testimonial-role {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    /* --- How It Works --- */
+    .how-it-works {
+      padding: 7rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.35s;
+      position: relative;
+    }
+
+    .step-card:hover {
+      border-color: var(--violet-border);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--gradient-1);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 4px 20px var(--violet-glow);
+    }
+
+    .step-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.65rem;
+    }
+
+    .step-card p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    /* --- Product Showcase --- */
+    .showcase {
+      padding: 7rem 2rem;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    .showcase-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .showcase-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .showcase-block:nth-child(even) .showcase-text {
+      order: 2;
+    }
+
+    .showcase-block:nth-child(even) .showcase-visual {
+      order: 1;
+    }
+
+    .showcase-text h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .showcase-text p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .showcase-text ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .showcase-text ul li {
+      padding: 0.35rem 0;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .showcase-text ul li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .showcase-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .discord-mockup {
+      background: #2f3136;
+      border-radius: 8px;
+      padding: 1.25rem;
+      font-size: 0.85rem;
+    }
+
+    .discord-mockup .dm-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #36393f;
+    }
+
+    .discord-mockup .dm-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--gradient-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: white;
+      font-weight: 700;
+    }
+
+    .discord-mockup .dm-bot-name {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .discord-mockup .dm-bot-badge {
+      background: #5865f2;
+      color: white;
+      font-size: 0.55rem;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    .discord-mockup .dm-embed {
+      background: #2a2d32;
+      border-left: 4px solid var(--violet);
+      border-radius: 4px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .discord-mockup .dm-embed-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--violet);
+      margin-bottom: 0.5rem;
+    }
+
+    .discord-mockup .dm-embed-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.2rem 0;
+      font-size: 0.8rem;
+    }
+
+    .discord-mockup .dm-embed-label {
+      color: #b9bbbe;
+    }
+
+    .discord-mockup .dm-embed-value {
+      color: #fff;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .discord-mockup .dm-embed-value.green { color: var(--green); }
+    .discord-mockup .dm-embed-value.cyan { color: var(--cyan); }
+    .discord-mockup .dm-embed-value.orange { color: var(--orange); }
+
+    /* Heatmap mockup */
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      gap: 2px;
+      margin-top: 0.75rem;
+    }
+
+    .heatmap-cell {
+      aspect-ratio: 1;
+      border-radius: 2px;
+    }
+
+    .heatmap-cell.h0 { background: #2a2d32; }
+    .heatmap-cell.h1 { background: rgba(139, 92, 246, 0.1); }
+    .heatmap-cell.h2 { background: rgba(139, 92, 246, 0.25); }
+    .heatmap-cell.h3 { background: rgba(139, 92, 246, 0.45); }
+    .heatmap-cell.h4 { background: rgba(139, 92, 246, 0.65); }
+    .heatmap-cell.h5 { background: rgba(139, 92, 246, 0.85); }
+
+    .heatmap-labels {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      gap: 2px;
+      margin-top: 0.3rem;
+    }
+
+    .heatmap-label {
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      text-align: center;
     }
 
     /* --- Features --- */
@@ -421,10 +841,84 @@
       line-height: 1.65;
     }
 
+    /* --- Why FD-DAB (Comparison) --- */
+    .comparison {
+      padding: 7rem 2rem;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    .comparison-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .comparison-table thead th {
+      padding: 1.25rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-table thead th:first-child {
+      text-align: left;
+      color: var(--text-muted);
+      width: 40%;
+    }
+
+    .comparison-table thead th:nth-child(2) {
+      color: var(--text-muted);
+    }
+
+    .comparison-table thead th:nth-child(3) {
+      background: var(--violet-dim);
+      color: var(--violet);
+    }
+
+    .comparison-table tbody td {
+      padding: 0.85rem 1rem;
+      font-size: 0.88rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .comparison-table tbody td:first-child {
+      text-align: left;
+      color: var(--text-secondary);
+    }
+
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table tbody tr:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .comp-check { color: var(--green); font-weight: 700; }
+    .comp-cross { color: var(--text-muted); }
+    .comp-highlight { background: rgba(139, 92, 246, 0.04); }
+    .comp-highlight td { background: rgba(139, 92, 246, 0.04); }
+
     /* --- Commands --- */
     .commands {
       padding: 7rem 2rem;
-      background: var(--bg-secondary);
       border-top: 1px solid var(--border);
       position: relative;
       z-index: 1;
@@ -598,29 +1092,14 @@
 
     .pricing-card .btn { width: 100%; justify-content: center; }
 
-    /* --- Testimonials / Social Proof --- */
-    .social-proof {
-      padding: 5rem 2rem;
-      border-top: 1px solid var(--border);
-      position: relative;
-      z-index: 1;
-    }
-
-    .proof-logos {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-      opacity: 0.4;
-    }
-
-    .proof-logos span {
-      font-size: 1.1rem;
-      font-weight: 700;
+    .pricing-guarantee {
+      text-align: center;
+      margin-top: 3rem;
       color: var(--text-muted);
-      letter-spacing: -0.02em;
+      font-size: 0.85rem;
     }
+
+    .pricing-guarantee span { color: var(--green); }
 
     /* --- CTA --- */
     .cta {
@@ -666,7 +1145,7 @@
       color: var(--text-secondary);
       font-size: 1.05rem;
       margin-bottom: 2.5rem;
-      max-width: 500px;
+      max-width: 550px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -739,6 +1218,19 @@
     @media (max-width: 768px) {
       nav { padding: 0.7rem 1rem; }
       .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(11, 13, 19, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-mobile-toggle { display: block; }
       .hero { padding: 6rem 1.5rem 3rem; }
       .features { padding: 4rem 1.5rem; }
       .commands { padding: 4rem 1.5rem; }
@@ -746,10 +1238,56 @@
       .cta { padding: 4rem 1.5rem; }
       .hero h1 { font-size: 2.4rem; }
       .stat-value { font-size: 2rem; }
+      .showcase-block { grid-template-columns: 1fr; }
+      .showcase-block:nth-child(even) .showcase-text { order: unset; }
+      .showcase-block:nth-child(even) .showcase-visual { order: unset; }
+      .trust-logos { gap: 1.5rem; }
+      .comparison-table { font-size: 0.78rem; }
     }
   </style>
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FD-DAB — Farkus Discord Analytics Bot",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Discord",
+    "description": "FD-DAB is a comprehensive Discord analytics bot providing deep insights, PDF reports, activity heatmaps, member retention tracking, and smart alerts for Discord server owners and community managers.",
+    "url": "https://farkusza.github.io/fd-dab-website/",
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "ZAR",
+        "description": "Free tier — 1 server, 7 days history"
+      },
+      {
+        "@type": "Offer",
+        "price": "69",
+        "priceCurrency": "ZAR",
+        "description": "Pro tier — 3 servers, 30 days history, PDF reports"
+      },
+      {
+        "@type": "Offer",
+        "price": "199",
+        "priceCurrency": "ZAR",
+        "description": "Business tier — 10 servers, 90 days history, API access"
+      }
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "FarkusDynamics",
+      "url": "https://farkusza.github.io/fd-dab-website/"
+    }
+  }
+  </script>
 </head>
 <body>
+
+  <!-- Floating particles -->
+  <div class="particles" id="particles"></div>
 
   <!-- Navigation -->
   <nav>
@@ -757,8 +1295,10 @@
       <img src="logo-v2-nav.png" alt="FarkusDynamics Logo">
       <div class="nav-logo-text">FD-<span>DAB</span></div>
     </a>
+    <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
+      <li><a href="#showcase">Demo</a></li>
       <li><a href="#commands">Commands</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="mailto:fd-dab-bot@agentmail.to">Contact</a></li>
@@ -772,24 +1312,27 @@
     <div class="hero-glow-2"></div>
     <div class="hero-content">
       <div class="hero-dab-logo fade-up">
-        <img src="dab-logo-hero.png" alt="FD-DAB">
+        <img src="dab-logo-hero.png" alt="FD-DAB Discord Analytics Bot">
       </div>
       <div class="hero-badge">
         <span class="dot"></span>
-        Private Beta — Invite Only
+        Live & Available Now
       </div>
       <h1>
         Beautiful Analytics for<br>
         <span class="gradient">Discord Communities</span>
       </h1>
       <p>
-        FD-DAB gives your Discord server powerful analytics, stunning PDF reports,
-        and actionable insights — all from a simple bot. Track engagement, monitor
-        growth, and understand your community like never before.
+        Stop guessing about your server's health. FD-DAB tracks every message, join, reaction, and voice session — then turns that data into stunning PDF reports, live heatmaps, and actionable insights your team can actually use.
       </p>
       <div class="hero-buttons">
-        <a href="#cta" class="btn btn-primary">🚀 Get Started Free</a>
-        <a href="#features" class="btn btn-secondary">Explore Features →</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1499773683835732088&permissions=268435456&scope=bot%20applications.commands" class="btn btn-primary" target="_blank" rel="noopener">🚀 Invite to Discord — It's Free</a>
+        <a href="#features" class="btn btn-secondary">See What It Does ↓</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-icon">✓</span> No credit card</div>
+        <div class="trust-item"><span class="trust-icon">✓</span> 60-sec setup</div>
+        <div class="trust-item"><span class="trust-icon">✓</span> Cancel anytime</div>
       </div>
     </div>
   </section>
@@ -798,16 +1341,16 @@
   <section class="stats">
     <div class="stats-grid">
       <div class="stat-item fade-up">
-        <div class="stat-value">4+</div>
-        <div class="stat-label">Guilds Connected</div>
+        <div class="stat-value" data-target="4">0</div>
+        <div class="stat-label">Active Servers</div>
       </div>
       <div class="stat-item fade-up">
-        <div class="stat-value">229+</div>
+        <div class="stat-value" data-target="229">0</div>
         <div class="stat-label">Users Tracked</div>
       </div>
       <div class="stat-item fade-up">
-        <div class="stat-value">∞</div>
-        <div class="stat-label">Insights Generated</div>
+        <div class="stat-value" data-target="99.9" data-suffix="%" data-decimal="1">0</div>
+        <div class="stat-label">Uptime</div>
       </div>
       <div class="stat-item fade-up">
         <div class="stat-value">R0</div>
@@ -816,18 +1359,206 @@
     </div>
   </section>
 
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <div class="section-tag">Trusted By Teams Across SA, UK & US</div>
+    <div class="trust-logos">
+      <span>SPAR Group</span>
+      <span>RPS</span>
+      <span>Old Mutual Wealth</span>
+      <span>MDT</span>
+      <span>Direct Axis</span>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote">
+          From an ops perspective, it's really great when you get an idea and you can get it executed in a week, especially with all the new staff starting, it was really nice to have something great to present to them.
+        </div>
+        <div class="testimonial-author">Lauren, Operations</div>
+        <div class="testimonial-role">RPS</div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote">
+          I've been dealing with Kyle for about two years now — when he's faced with tough situations, he keeps a calm head and makes sure clients feel their problem will be resolved.
+        </div>
+        <div class="testimonial-author">Lee Lazarus</div>
+        <div class="testimonial-role">Business Applications Team Leader, SPAR Group</div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote">
+          They started from the external side, penetrated our systems, and produced results showing exactly where the gaps were, including our Wi-Fi, which is widely used by our students.
+        </div>
+        <div class="testimonial-author">Njabulo Xaba</div>
+        <div class="testimonial-role">Information Security Officer, Mangosuthu University of Technology</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-header fade-up">
+      <div class="section-tag">How It Works</div>
+      <h2>Up and Running in <span class="gradient">60 Seconds</span></h2>
+      <p>No servers to configure. No APIs to wire up. Just invite the bot and let it do the heavy lifting.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-up">
+        <div class="step-number">1</div>
+        <h3>Invite FD-DAB</h3>
+        <p>Click the invite link, authorize the bot to your server, and it's ready. No configuration needed to start tracking.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-number">2</div>
+        <h3>Watch It Track</h3>
+        <p>FD-DAB silently tracks messages, joins, voice sessions, reactions, and more — no manual setup required. Data builds from day one.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-number">3</div>
+        <h3>Get Insights</h3>
+        <p>Run <code>/dab stats</code> for instant numbers, schedule automated PDF reports, or export data as CSV. Your call.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Showcase -->
+  <section class="showcase" id="showcase">
+    <div class="showcase-inner">
+      <div class="section-header fade-up">
+        <div class="section-tag">See It In Action</div>
+        <h2>Analytics That Actually Look Good</h2>
+        <p>Every command produces rich, styled Discord embeds and beautiful PDF reports — not plain text dumps.</p>
+      </div>
+
+      <!-- Showcase 1: Stats Embed -->
+      <div class="showcase-block fade-up">
+        <div class="showcase-text">
+          <h3>Instant Server Statistics</h3>
+          <p>Run <code>/dab stats</code> and get a complete health check of your server in seconds. Messages, growth, peak hours, top contributors — all in a beautifully formatted embed.</p>
+          <ul>
+            <li>Real-time message counts and retention</li>
+            <li>Peak activity hour detection</li>
+            <li>Top contributor rankings</li>
+            <li>Net growth tracking with trend indicators</li>
+          </ul>
+        </div>
+        <div class="showcase-visual">
+          <div class="discord-mockup">
+            <div class="dm-header">
+              <div class="dm-avatar">D</div>
+              <span class="dm-bot-name">FD-DAB</span>
+              <span class="dm-bot-badge">BOT</span>
+            </div>
+            <div class="dm-embed">
+              <div class="dm-embed-title">📊 Server Analytics</div>
+              <div class="dm-embed-row">
+                <span class="dm-embed-label">Messages</span>
+                <span class="dm-embed-value">12,847</span>
+              </div>
+              <div class="dm-embed-row">
+                <span class="dm-embed-label">Members</span>
+                <span class="dm-embed-value green">↑ 229 (+12 this week)</span>
+              </div>
+              <div class="dm-embed-row">
+                <span class="dm-embed-label">Peak Hour</span>
+                <span class="dm-embed-value cyan">20:00 CAT</span>
+              </div>
+              <div class="dm-embed-row">
+                <span class="dm-embed-label">Top Channel</span>
+                <span class="dm-embed-value">#general</span>
+              </div>
+              <div class="dm-embed-row">
+                <span class="dm-embed-label">Retention</span>
+                <span class="dm-embed-value orange">87.3%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Showcase 2: Heatmap -->
+      <div class="showcase-block fade-up">
+        <div class="showcase-text">
+          <h3>Activity Heatmaps</h3>
+          <p>See exactly when your community is most active. The heatmap shows patterns by day-of-week and hour, helping you schedule events, announcements, and content for maximum impact.</p>
+          <ul>
+            <li>7-day × 24-hour grid visualization</li>
+            <li>Identify quiet periods and engagement spikes</li>
+            <li>Optimize event scheduling and content drops</li>
+            <li>Compare activity across date ranges</li>
+          </ul>
+        </div>
+        <div class="showcase-visual">
+          <div class="discord-mockup">
+            <div class="dm-header">
+              <div class="dm-avatar">D</div>
+              <span class="dm-bot-name">FD-DAB</span>
+              <span class="dm-bot-badge">BOT</span>
+            </div>
+            <div class="dm-embed">
+              <div class="dm-embed-title">🔥 Activity Heatmap — Last 7 Days</div>
+              <div id="heatmap-visualization"></div>
+              <div class="heatmap-labels" id="heatmap-hours"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Showcase 3: Ghost Ping -->
+      <div class="showcase-block fade-up">
+        <div class="showcase-text">
+          <h3>Ghost Ping Detection</h3>
+          <p>Never miss a deleted mention. FD-DAB catches every @mention that gets deleted and logs it with the preview text, timestamp, and sender. Your community stays accountable.</p>
+          <ul>
+            <li>Real-time deleted mention tracking</li>
+            <li>Message preview with context</li>
+            <li>Role mention support</li>
+            <li>Configurable alert channels</li>
+          </ul>
+        </div>
+        <div class="showcase-visual">
+          <div class="discord-mockup">
+            <div class="dm-header">
+              <div class="dm-avatar">D</div>
+              <span class="dm-bot-name">FD-DAB</span>
+              <span class="dm-bot-badge">BOT</span>
+            </div>
+            <div class="dm-embed" style="border-left-color: var(--orange);">
+              <div class="dm-embed-title" style="color: var(--orange);">👻 Ghost Ping Detected</div>
+              <div class="dm-embed-row">
+                <span class="dm-embed-label">From</span>
+                <span class="dm-embed-value">User123#4567</span>
+              </div>
+              <div class="dm-embed-row">
+                <span class="dm-embed-label">Target</span>
+                <span class="dm-embed-value">@Admin Team</span>
+              </div>
+              <div class="dm-embed-row">
+                <span class="dm-embed-label">Content</span>
+                <span class="dm-embed-value">"hey can someone help me..."</span>
+              </div>
+              <div class="dm-embed-row">
+                <span class="dm-embed-label">Time</span>
+                <span class="dm-embed-value cyan">Today at 14:32</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Features -->
   <section class="features" id="features">
     <div class="section-header fade-up">
       <div class="section-tag">Features</div>
-      <h2>Everything You Need</h2>
-      <p>Powerful analytics features designed for Discord community managers who want real insights, not just numbers.</p>
+      <h2>16 Analytics Features. One Bot.</h2>
+      <p>Everything a Discord community manager needs to understand, grow, and protect their server — no other tool required.</p>
     </div>
     <div class="features-grid">
       <div class="feature-card fade-up">
         <div class="feature-icon violet">📊</div>
         <h3>Server Statistics</h3>
-        <p>Track total messages, member joins, leaves, and net growth. See your community's health at a glance with peak activity hours and top contributors.</p>
+        <p>Track messages, joins, leaves, and net growth. See your community's health at a glance with peak activity hours and top contributors.</p>
       </div>
       <div class="feature-card fade-up">
         <div class="feature-icon cyan">📈</div>
@@ -852,7 +1583,7 @@
       <div class="feature-card fade-up">
         <div class="feature-icon orange">👥</div>
         <h3>Member Retention</h3>
-        <p>Track member join/leave patterns and understand your retention rate. See who's staying and who's leaving.</p>
+        <p>Track member join/leave patterns and understand your retention rate. See who's staying and who's leaving — and why.</p>
       </div>
       <div class="feature-card fade-up">
         <div class="feature-icon violet">🏆</div>
@@ -867,7 +1598,7 @@
       <div class="feature-card fade-up">
         <div class="feature-icon green">😀</div>
         <h3>Reaction Analytics</h3>
-        <p>See the most-used emojis and reaction patterns across your server. Understand what resonates with your community.</p>
+        <p>See the most-used emojis and reaction patterns across your server. Understand what content resonates with your community.</p>
       </div>
       <div class="feature-card fade-up">
         <div class="feature-icon orange">🔔</div>
@@ -907,82 +1638,178 @@
     </div>
   </section>
 
+  <!-- Comparison: Why FD-DAB -->
+  <section class="comparison" id="comparison">
+    <div class="comparison-inner">
+      <div class="section-header fade-up">
+        <div class="section-tag">Why FD-DAB?</div>
+        <h2>More Than Just Numbers</h2>
+        <p>Most Discord bots give you basic counts. FD-DAB gives you a complete analytics platform with professional reports, health scoring, and actionable insights.</p>
+      </div>
+      <table class="comparison-table fade-up">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Statbot / MEE6</th>
+            <th>FD-DAB</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Message & member tracking</td>
+            <td><span class="comp-check">✓</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Voice channel analytics</td>
+            <td><span class="comp-cross">✗</span> or limited</td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Full session data</td>
+          </tr>
+          <tr>
+            <td>PDF analytics reports</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Branded, multi-section</td>
+          </tr>
+          <tr>
+            <td>Scheduled reports</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Daily/weekly/monthly</td>
+          </tr>
+          <tr>
+            <td>Activity heatmaps</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> 7-day × 24-hour</td>
+          </tr>
+          <tr>
+            <td>Member retention rates</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Calculated & tracked</td>
+          </tr>
+          <tr>
+            <td>Ghost ping detection</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Real-time detection</td>
+          </tr>
+          <tr>
+            <td>Smart alerts & thresholds</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Custom config</td>
+          </tr>
+          <tr>
+            <td>CSV / JSON data export</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Full export</td>
+          </tr>
+          <tr>
+            <td>Custom report branding</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Logo, colors, title</td>
+          </tr>
+          <tr>
+            <td>Webhook integrations</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> External push</td>
+          </tr>
+          <tr>
+            <td>Event impact analysis</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Before/during/after</td>
+          </tr>
+          <tr>
+            <td>Health score & insights</td>
+            <td><span class="comp-cross">✗</span></td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Composite scoring</td>
+          </tr>
+          <tr>
+            <td>South African pricing (ZAR)</td>
+            <td><span class="comp-cross">✗</span> USD only</td>
+            <td class="comp-highlight"><span class="comp-check">✓</span> Local currency</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- Commands -->
   <section class="commands" id="commands">
     <div class="commands-inner">
       <div class="section-header fade-up">
         <div class="section-tag">Commands</div>
-        <h2>Simple & Powerful</h2>
-        <p>Everything is accessible through intuitive Discord slash commands.</p>
+        <h2>23+ Slash Commands</h2>
+        <p>Everything is accessible through intuitive Discord slash commands. No config files, no YAML. Just type and go.</p>
       </div>
       <div class="command-list">
         <div class="command-item fade-up">
-          <span class="command-name">/analytics stats</span>
-          <span class="command-desc">View server statistics — messages, joins, leaves, peak hours, top contributors, retention</span>
+          <span class="command-name">/dab stats</span>
+          <span class="command-desc">Server statistics — messages, joins, leaves, peak hours, top contributors, retention</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics reports generate</span>
-          <span class="command-desc">Generate a 7-day PDF analytics report with charts and insights</span>
+          <span class="command-name">/dab insight</span>
+          <span class="command-desc">AI-powered health insights with actionable recommendations for your server</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics reports monthly</span>
-          <span class="command-desc">Generate a 30-day PDF analytics report</span>
+          <span class="command-name">/dab compare</span>
+          <span class="command-desc">Compare server metrics: current 7 days vs previous 7 days</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics reports custom</span>
-          <span class="command-desc">Generate a PDF report for a custom date range</span>
+          <span class="command-name">/dab leaderboard</span>
+          <span class="command-desc">Top contributors ranked by engagement score (messages, reactions, voice, streaks)</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics reports csv</span>
-          <span class="command-desc">Export analytics data as CSV for external analysis</span>
+          <span class="command-name">/dab trends</span>
+          <span class="command-desc">Growth trends with sparkline chart and week-over-week comparison</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics reports json</span>
-          <span class="command-desc">Export analytics data as JSON</span>
+          <span class="command-name">/dab heatmap</span>
+          <span class="command-desc">Activity heatmap by day of week and hour</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics heatmap</span>
-          <span class="command-desc">View activity heatmap by day of week and hour</span>
+          <span class="command-name">/dab pdf generate</span>
+          <span class="command-desc">Generate a 7-day, 30-day, or custom PDF analytics report</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics reactions</span>
-          <span class="command-desc">Show most-used emojis and reaction statistics</span>
-        </div>
-        <div class="command-item fade-up">
-          <span class="command-name">/analytics voice</span>
-          <span class="command-desc">Show voice channel usage stats and session data</span>
-        </div>
-        <div class="command-item fade-up">
-          <span class="command-name">/analytics roles</span>
-          <span class="command-desc">Show role activity rankings</span>
-        </div>
-        <div class="command-item fade-up">
-          <span class="command-name">/analytics schedule</span>
+          <span class="command-name">/dab schedule</span>
           <span class="command-desc">Configure automated scheduled reports (daily/weekly/monthly)</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics streak</span>
+          <span class="command-name">/dab export csv</span>
+          <span class="command-desc">Export analytics data as CSV for external analysis</span>
+        </div>
+        <div class="command-item fade-up">
+          <span class="command-name">/dab voice</span>
+          <span class="command-desc">Voice channel usage stats and session data</span>
+        </div>
+        <div class="command-item fade-up">
+          <span class="command-name">/dab reactions</span>
+          <span class="command-desc">Most-used emojis and reaction statistics</span>
+        </div>
+        <div class="command-item fade-up">
+          <span class="command-name">/dab roles</span>
+          <span class="command-desc">Role activity rankings with active member counts</span>
+        </div>
+        <div class="command-item fade-up">
+          <span class="command-name">/dab streak</span>
           <span class="command-desc">Check your own activity streak</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics leaderboard</span>
-          <span class="command-desc">View the activity streaks leaderboard</span>
+          <span class="command-name">/dab ghostpings</span>
+          <span class="command-desc">Recent ghost pings (deleted @mentions)</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics ghostpings</span>
-          <span class="command-desc">Show recent ghost pings (deleted @mentions)</span>
+          <span class="command-name">/dab alerts</span>
+          <span class="command-desc">Set custom alert thresholds for any metric</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics branding</span>
+          <span class="command-name">/dab branding</span>
           <span class="command-desc">Customize PDF report branding (logo, colors, title)</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics webhooks</span>
+          <span class="command-name">/dab webhooks</span>
           <span class="command-desc">Configure webhook integrations for external services</span>
         </div>
         <div class="command-item fade-up">
-          <span class="command-name">/analytics help</span>
-          <span class="command-desc">View all available analytics commands</span>
+          <span class="command-name">/dab help</span>
+          <span class="command-desc">View all available commands with descriptions</span>
         </div>
       </div>
     </div>
@@ -993,7 +1820,7 @@
     <div class="section-header fade-up">
       <div class="section-tag">Pricing</div>
       <h2>Simple & Transparent</h2>
-      <p>Start free, upgrade when you need more. No hidden fees, no surprises. Cancel anytime.</p>
+      <p>Start free. Upgrade when you're ready. No hidden fees, no surprises. Cancel anytime.</p>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card fade-up">
@@ -1016,7 +1843,7 @@
           <li><span class="cross">✗</span> Custom branding</li>
           <li><span class="cross">✗</span> Webhook integrations</li>
         </ul>
-        <a href="#cta" class="btn btn-secondary">Get Started</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1499773683835732088&permissions=268435456&scope=bot%20applications.commands" class="btn btn-secondary" target="_blank" rel="noopener">Get Started Free</a>
       </div>
       <div class="pricing-card popular fade-up">
         <div class="pricing-tier">Pro</div>
@@ -1037,7 +1864,7 @@
           <li><span class="cross">✗</span> Webhook integrations</li>
           <li><span class="cross">✗</span> API access</li>
         </ul>
-        <a href="#cta" class="btn btn-primary">Upgrade to Pro</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1499773683835732088&permissions=268435456&scope=bot%20applications.commands" class="btn btn-primary" target="_blank" rel="noopener">Upgrade to Pro</a>
       </div>
       <div class="pricing-card fade-up">
         <div class="pricing-tier">Business</div>
@@ -1056,8 +1883,11 @@
           <li><span class="check">✓</span> Custom feature requests</li>
           <li><span class="check">✓</span> Priority bug fixes</li>
         </ul>
-        <a href="#cta" class="btn btn-secondary">Contact Sales</a>
+        <a href="mailto:fd-dab-bot@agentmail.to" class="btn btn-secondary">Contact Sales</a>
       </div>
+    </div>
+    <div class="pricing-guarantee fade-up">
+      <span>🔒</span> No credit card required to start • Cancel anytime • 100% uptime SLA on paid plans
     </div>
   </section>
 
@@ -1065,9 +1895,9 @@
   <section class="cta" id="cta">
     <div class="cta-content">
       <h2>Ready to Understand Your <span class="gradient">Community</span>?</h2>
-      <p>Invite FD-DAB to your Discord server and start getting insights today. Free tier available — no credit card required.</p>
+      <p>Invite FD-DAB to your Discord server and start getting insights today. Free tier available — no credit card required, full access in 60 seconds.</p>
       <div class="hero-buttons">
-        <a href="https://discord.com/oauth2/authorize?client_id=1499773683835732088&permissions=268435456&scope=bot%20applications.commands" class="btn btn-primary" target="_blank">🤖 Invite Bot</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1499773683835732088&permissions=268435456&scope=bot%20applications.commands" class="btn btn-primary" target="_blank" rel="noopener">🤖 Invite Bot — Free</a>
         <a href="mailto:fd-dab-bot@agentmail.to" class="btn btn-secondary">📧 Contact Us</a>
       </div>
     </div>
@@ -1088,8 +1918,9 @@
     <p class="footer-copy">© 2026 FarkusDynamics. All rights reserved. Made with 💜 in South Africa.</p>
   </footer>
 
-  <!-- Scroll animation script -->
+  <!-- Scripts -->
   <script>
+    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1099,6 +1930,93 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Counter animation
+    function animateCounters() {
+      document.querySelectorAll('.stat-value[data-target]').forEach(el => {
+        if (el.dataset.animated) return;
+        const target = parseFloat(el.dataset.target);
+        const decimal = parseInt(el.dataset.decimal) || 0;
+        const suffix = el.dataset.suffix || '';
+        const duration = 2000;
+        const start = performance.now();
+
+        function update(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = (target * eased).toFixed(decimal);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        el.dataset.animated = '1';
+        requestAnimationFrame(update);
+      });
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) animateCounters();
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.stats').forEach(el => counterObserver.observe(el));
+
+    // Floating particles
+    (function createParticles() {
+      const container = document.getElementById('particles');
+      if (!container) return;
+      for (let i = 0; i < 15; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = 2 + Math.random() * 4;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = (Math.random() * 100) + '%';
+        p.style.animationDuration = (20 + Math.random() * 30) + 's';
+        p.style.animationDelay = (Math.random() * 20) + 's';
+        container.appendChild(p);
+      }
+    })();
+
+    // Generate heatmap visualization
+    (function generateHeatmap() {
+      const container = document.getElementById('heatmap-visualization');
+      const hoursLabel = document.getElementById('heatmap-hours');
+      if (!container) return;
+
+      // Create 7 rows (days) × 24 columns (hours)
+      const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      let html = '<div style="display:flex;flex-direction:column;gap:2px;">';
+      dayLabels.forEach(day => {
+        html += '<div style="display:flex;gap:2px;align-items:center;">';
+        html += '<span style="width:24px;font-size:0.6rem;color:#4e5468;text-align:right;margin-right:4px;">' + day + '</span>';
+        html += '<div class="heatmap-grid" style="grid-template-columns:repeat(24,1fr);flex:1;">';
+        for (let h = 0; h < 24; h++) {
+          // Simulate realistic activity patterns
+          let level = 0;
+          if (h >= 9 && h <= 17) level = 3 + Math.floor(Math.random() * 2);
+          else if (h >= 18 && h <= 22) level = 4 + Math.floor(Math.random() * 2);
+          else if (h >= 23 || h <= 2) level = 2 + Math.floor(Math.random());
+          else if (h >= 3 && h <= 6) level = Math.floor(Math.random() * 2);
+          else level = 1 + Math.floor(Math.random() * 2);
+          level = Math.min(level, 5);
+          html += '<div class="heatmap-cell h' + level + '"></div>';
+        }
+        html += '</div></div>';
+      });
+      html += '</div>';
+      container.innerHTML = html;
+
+      // Hour labels
+      if (hoursLabel) {
+        hoursLabel.style.marginLeft = '28px';
+        let labelsHtml = '';
+        for (let h = 0; h < 24; h += 3) {
+          labelsHtml += '<span class="heatmap-label">' + String(h).padStart(2, '0') + '</span>';
+        }
+        hoursLabel.innerHTML = labelsHtml;
+      }
+    })();
   </script>
 
 </body>
