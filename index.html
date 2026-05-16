@@ -1341,15 +1341,15 @@
   <section class="stats">
     <div class="stats-grid">
       <div class="stat-item fade-up">
-        <div class="stat-value" data-target="4">0</div>
+        <div class="stat-value" data-target="6">6</div>
         <div class="stat-label">Active Servers</div>
       </div>
       <div class="stat-item fade-up">
-        <div class="stat-value" data-target="229">0</div>
+        <div class="stat-value" data-target="142">142</div>
         <div class="stat-label">Users Tracked</div>
       </div>
       <div class="stat-item fade-up">
-        <div class="stat-value" data-target="99.9" data-suffix="%" data-decimal="1">0</div>
+        <div class="stat-value" data-target="99.9" data-suffix="%" data-decimal="1">99.9</div>
         <div class="stat-label">Uptime</div>
       </div>
       <div class="stat-item fade-up">
@@ -1403,6 +1403,9 @@
   </section>
 
   <!-- Product Showcase -->
+  </section>
+
+  <!-- Product Showcase -->
   <section class="showcase" id="showcase">
     <div class="showcase-inner">
       <div class="section-header fade-up">
@@ -1411,53 +1414,22 @@
         <p>Every command produces rich, styled Discord embeds and beautiful PDF reports — not plain text dumps.</p>
       </div>
 
-      <!-- Showcase 1: Stats Embed -->
+            <!-- Showcase 1: Video Demo -->
       <div class="showcase-block fade-up">
         <div class="showcase-text">
-          <h3>Instant Server Statistics</h3>
-          <p>Run <code>/dab stats</code> and get a complete health check of your server in seconds. Messages, growth, peak hours, top contributors — all in a beautifully formatted embed.</p>
-          <ul>
-            <li>Real-time message counts and retention</li>
-            <li>Peak activity hour detection</li>
-            <li>Top contributor rankings</li>
-            <li>Net growth tracking with trend indicators</li>
-          </ul>
+          <h3>See FD-DAB in Action</h3>
+          <p>Watch our promotional video to see how FD-DAB transforms Discord server analytics into beautiful insights.</p>
         </div>
         <div class="showcase-visual">
-          <div class="discord-mockup">
-            <div class="dm-header">
-              <div class="dm-avatar">D</div>
-              <span class="dm-bot-name">FD-DAB</span>
-              <span class="dm-bot-badge">BOT</span>
-            </div>
-            <div class="dm-embed">
-              <div class="dm-embed-title">📊 Server Analytics</div>
-              <div class="dm-embed-row">
-                <span class="dm-embed-label">Messages</span>
-                <span class="dm-embed-value">12,847</span>
-              </div>
-              <div class="dm-embed-row">
-                <span class="dm-embed-label">Members</span>
-                <span class="dm-embed-value green">↑ 229 (+12 this week)</span>
-              </div>
-              <div class="dm-embed-row">
-                <span class="dm-embed-label">Peak Hour</span>
-                <span class="dm-embed-value cyan">20:00 CAT</span>
-              </div>
-              <div class="dm-embed-row">
-                <span class="dm-embed-label">Top Channel</span>
-                <span class="dm-embed-value">#general</span>
-              </div>
-              <div class="dm-embed-row">
-                <span class="dm-embed-label">Retention</span>
-                <span class="dm-embed-value orange">87.3%</span>
-              </div>
-            </div>
+          <video controls poster="dab-logo-hero.png" style="width:100%; border-radius:var(--radius-lg); box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <source src="FD-DAB-Promo-enhanced.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-caption" style="margin-top:1rem; text-align:center; color:var(--text-secondary); font-size:0.9rem;">
+            FD-DAB Promo Video - See the bot in action
           </div>
         </div>
       </div>
-
-      <!-- Showcase 2: Heatmap -->
       <div class="showcase-block fade-up">
         <div class="showcase-text">
           <h3>Activity Heatmaps</h3>
@@ -1886,7 +1858,15 @@
   </section>
 
   <!-- Footer -->
-  <footer>
+  
+  <!-- Beta Ending Notice -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2>⚠️ All Features Open Beta Ending Soon!</h2>
+      <p>The all-features open beta period for FD-DAB ends on <span class="gradient">June 14th, 2026</span>. After this date, advanced features will require a Pro or Business subscription. Don't miss out — invite FD-DAB now to lock in full access during the beta period!</p>
+      <a href="https://discord.com/oauth2/authorize?client_id=1499773683835732088&permissions=268435456&scope=bot%20applications.commands" class="btn btn-primary" target="_blank" rel="noopener">🚀 Invite to Discord — Free During Beta</a>
+    </div>
+  </section><footer>
     <div class="footer-logo">
       <img src="logo-v2-nav.png" alt="FarkusDynamics">
       <div class="footer-logo-text">FD-<span>DAB</span></div>
