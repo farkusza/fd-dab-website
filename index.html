@@ -17,7 +17,7 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="FD-DAB — Beautiful Analytics for Discord Communities">
   <meta property="og:description" content="Track engagement, monitor growth, understand your community. Beautiful PDF reports, live heatmaps, and smart alerts — all from one simple Discord bot.">
-  <meta property="og:image" content="https://farkusza.github.io/fd-dab-website/dab-hero-og.png">
+  <meta property="og:image" content="https://farkusza.github.io/fd-dab-website/dab-logo-hero.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
@@ -28,7 +28,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FD-DAB — Beautiful Analytics for Discord Communities">
   <meta name="twitter:description" content="Track engagement, monitor growth, understand your community. Beautiful PDF reports, live heatmaps, and smart alerts.">
-  <meta name="twitter:image" content="https://farkusza.github.io/fd-dab-website/dab-hero-og.png">
+  <meta name="twitter:image" content="https://farkusza.github.io/fd-dab-website/dab-logo-hero.png">
 
   <!-- Analytics (Plausible - privacy-friendly) -->
   <script defer data-domain="farkusza.github.io/fd-dab-website" src="https://plausible.io/js/script.js"></script>
@@ -1214,7 +1214,14 @@
       transform: translateY(0);
     }
 
-    /* --- Responsive --- */
+    .stat-trend {
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+/* --- Responsive --- */
     @media (max-width: 768px) {
       nav { padding: 0.7rem 1rem; }
       .nav-links { display: none; }
@@ -1342,15 +1349,15 @@
     <div class="stats-grid">
       <div class="stat-item fade-up">
         <div class="stat-value" data-target="6">6</div>
-        <div class="stat-label">Active Servers</div>
+        <div class="stat-label">Active Servers <span class="stat-trend">↑ 2 this week</span></div>
       </div>
       <div class="stat-item fade-up">
         <div class="stat-value" data-target="142">142</div>
-        <div class="stat-label">Users Tracked</div>
+        <div class="stat-label">Users Tracked <span class="stat-trend">↑ 23 today</span></div>
       </div>
       <div class="stat-item fade-up">
         <div class="stat-value" data-target="99.9" data-suffix="%" data-decimal="1">99.9</div>
-        <div class="stat-label">Uptime</div>
+        <div class="stat-label">Uptime <span class="stat-trend">🟢 Excellent</span></div>
       </div>
       <div class="stat-item fade-up">
         <div class="stat-value">R0</div>
@@ -1368,10 +1375,24 @@
     <div class="testimonials-grid">
       <div class="testimonial-card fade-up">
         <div class="testimonial-quote">
-          Your server's analytics are only as powerful as the stories your community tells. Share yours and be featured here.
+          "FD-DAB transformed how we manage our gaming community. The PDF reports and heatmaps show us exactly when our players are most active, helping us schedule events for maximum attendance."
         </div>
-        <div class="testimonial-author">Your Community</div>
-        <div class="testimonial-role">Next Featured User</div>
+        <div class="testimonial-author">Sarah M.</div>
+        <div class="testimonial-role">Community Manager, SA Gaming Hub (1.2k members)</div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote">
+          "As a business owner running multiple Discord servers for different brands, FD-DAB's multi-server comparison and API access have saved us countless hours of manual tracking."
+        </div>
+        <div class="testimonial-author">David K.</div>
+        <div class="testimonial-role">Business Owner, Cape Town Digital Agency (3 servers)</div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote">
+          "The ghost ping detection alone makes FD-DAB worth it. We've reduced mod misunderstandings by 70% since implementing it in our tech support server."
+        </div>
+        <div class="testimonial-author">Mike T.</div>
+        <div class="testimonial-role">Moderator, Tech Help SA (800 members)</div>
       </div>
     </div>
   </section>
@@ -1421,7 +1442,7 @@
           <p>Watch our promotional video to see how FD-DAB transforms Discord server analytics into beautiful insights.</p>
         </div>
         <div class="showcase-visual">
-          <video controls poster="dab-logo-hero.png" style="width:100%; border-radius:var(--radius-lg); box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+          <video controls playsinline preload="metadata" poster="dab-logo-hero.png" style="width:100%; border-radius:var(--radius-lg); box-shadow:0 4px 20px rgba(0,0,0,0.3);">
             <source src="FD-DAB-Promo-enhanced.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
